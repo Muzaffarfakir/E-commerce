@@ -7,13 +7,13 @@ function Home() {
     let [d, Sd] = useState([]);
     let nav = useNavigate();
     async function info() {
-        await fetch("https://fakestoreapi.com/products").then((res) => res.json()).then((data) => {
+        await fetch("https://e-bcak.onrender.com/products").then((res) => res.json()).then((data) => {
             Sd(data);
         })
 
         axios({
             method: "post",
-            url: 'http://localhost:8000/',
+            url: 'https://e-bcak.onrender.com/',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: window.localStorage.getItem("Token"),
@@ -34,7 +34,7 @@ function Home() {
 
 
     function addcart(el) {
-        axios.post('http://localhost:8000/products',
+        axios.post('https://e-bcak.onrender.com/products',
             { el })
         nav("/addcart")
 
