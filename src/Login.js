@@ -16,7 +16,7 @@ function Login(props) {
 
     let infi = () => {
 
-        axios.post("http://localhost:8000/login", { email, pass, name }).then((res) => {
+        axios.post("https://e-bcak.onrender.com/login", { email, pass, name }).then((res) => {
             if (res.data.mess == "exits") {
                 setCookies("access_token", res.data.token);
                 window.localStorage.setItem("Token", res.data.token)
