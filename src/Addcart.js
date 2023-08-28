@@ -5,7 +5,7 @@ import axios from "axios";
 function Addcart() {
     let [d, sD] = useState([]);
     async function info() {
-        await fetch("http://localhost:8000/getProduct").then((res) => res.json()).then((data) => {
+        await fetch("https://e-bcak.onrender.com/getProduct").then((res) => res.json()).then((data) => {
             sD(data)
 
 
@@ -18,13 +18,13 @@ function Addcart() {
   
 
     function del(id) {
-        axios.delete(`http://localhost:8000/delOne${id}`)
+        axios.delete(`https://e-bcak.onrender.com/delOne${id}`)
         window.location.reload()
 
     }
     async function Pay(price, des) {
-        axios.post("http://localhost:8000/amount", { price, des })
-        await fetch("http://localhost:8000/Pay").then((res) => res.json()).then((data) => {
+        axios.post("https://e-bcak.onrender.com/amount", { price, des })
+        await fetch("https://e-bcak.onrender.com/Pay").then((res) => res.json()).then((data) => {
             window.location = data.url;
         })
     }
