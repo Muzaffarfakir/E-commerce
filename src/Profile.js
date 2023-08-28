@@ -20,7 +20,7 @@ function Profile(props) {
 
         window.localStorage.removeItem("Token");
 
-        axios.delete("http://localhost:8000/del");
+        axios.delete("https://e-bcak.onrender.com/del");
 
 
         nav('/')
@@ -29,7 +29,7 @@ function Profile(props) {
     }
 
     async function pro() {
-        await fetch("http://localhost:8000/profile").then((res) => res.json()).then((data) => {
+        await fetch("https://e-bcak.onrender.com/profile").then((res) => res.json()).then((data) => {
 
             setProfileData(data)
 
