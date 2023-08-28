@@ -7,7 +7,7 @@ function Home() {
     let [d, Sd] = useState([]);
     let nav = useNavigate();
     async function info() {
-        await fetch("https://e-bcak.onrender.com/products").then((res) => res.json()).then((data) => {
+        await fetch("https://fakestoreapi.com/products").then((res) => res.json()).then((data) => {
             Sd(data);
         })
 
