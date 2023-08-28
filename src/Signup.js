@@ -17,7 +17,7 @@ function Signup() {
 
         axios({
             method: "post",
-            url: "http://localhost:8000/signdataImg",
+            url: "https://e-bcak.onrender.com/signdataImg",
             data: data,
             config: {
                 headers: {
@@ -40,7 +40,7 @@ function Signup() {
             alert("Please Write Somethings First Here !")
         }
         else {
-            axios.post("http://localhost:8000/signData", { name, pass, email, mob, des }).then((res)=>{
+            axios.post("https://e-bcak.onrender.com/signData", { name, pass, email, mob, des }).then((res)=>{
                 console.log(res)
                 if(res.data=="cExist"){
                     alert("This Email or Password is Already exist")
