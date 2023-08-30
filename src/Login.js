@@ -20,6 +20,8 @@ function Login(props) {
             if (res.data.mess == "exits") {
                 setCookies("access_token", res.data.token);
                 window.localStorage.setItem("Token", res.data.token)
+                 window.localStorage.setItem("id",res.data.id)
+
                
 
                 nav("/profile")
