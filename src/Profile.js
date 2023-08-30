@@ -32,7 +32,7 @@ function Profile(props) {
     let id = window.localStorage.getItem("id")
     
      function   pro() {
-      fetch(`http://localhost:8000/profile/${id}`).then((res)=>res.json()).then((data)=>{
+      fetch(`https://e-bcak.onrender.com/profile/${id}`).then((res)=>res.json()).then((data)=>{
         setProfileData(data)
         console.log(data);
       })
