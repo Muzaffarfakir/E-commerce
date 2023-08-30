@@ -21,7 +21,7 @@ function Profile(props) {
         window.localStorage.removeItem("Token");
 
 
-        axios.delete("http://localhost:8000/del");
+       // axios.delete("http://localhost:8000/del");
 
 
         nav('/')
