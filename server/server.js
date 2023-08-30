@@ -94,7 +94,9 @@ app.post("/signData", async (req, res) => {
 
     }
     else {
-        let url = req.protocol + "://" + req.get("host");
+      
+        let url =  "https://" + req.get("host");
+
         let data = new Users({
             name: req.body.name,
             email: req.body.email,
