@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Login from "./Login";
 import axios from "axios"
 import { useCookies } from "react-cookie";
@@ -20,7 +20,8 @@ function Profile(props) {
 
         window.localStorage.removeItem("Token");
 
-        axios.delete("https://e-bcak.onrender.com/del");
+
+        axios.delete("http://localhost:8000/del");
 
 
         nav('/')
@@ -28,20 +29,25 @@ function Profile(props) {
 
     }
 
-    async function pro() {
-        await fetch("https://e-bcak.onrender.com/profile").then((res) => res.json()).then((data) => {
+    let id = window.localStorage.getItem("id")
+    
+     function   pro() {
+      fetch(`http://localhost:8000/profile/${id}`).then((res)=>res.json()).then((data)=>{
+        setProfileData(data)
+        console.log(data);
+      })
 
-            setProfileData(data)
-
-            console.log(cookies)
-
-        })
-
+        console.log(id)
 
     }
     useEffect(() => {
         pro();
     }, [])
+
+
+
+
+
 
 
 
@@ -60,6 +66,7 @@ function Profile(props) {
                 Your Profile Here
 
             </h2>
+            <button onClick={pro} class="btn btn-outline-primary">My Profile</button>
             <div class="card text-center my-6 mb-3 mx-3">
                 {ProfileData.map((el) => {
                     return <div>
