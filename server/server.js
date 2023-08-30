@@ -115,23 +115,18 @@ app.post("/login", async (req, res) => {
     pass = req.body.pass;
     name = req.body.name;
 
-    let opt={
-        httpOnly:true
+    let opt = {
+        httpOnly: true
     }
     let data = await Users.findOne({ email, pass, name })
     if (data) {
         let token = jwt.sign({ id: data._id }, "muju", { expiresIn: "5d" });
-        res.status(200).cookie(token,opt).json({
-            mess:"exits",
-            token:token,
-            id:data._id
+        res.status(200).cookie(token, opt).json({
+            mess: "exits",
+            token: token,
+            id: data._id
         })
-        //res.status(201).json({
-          //  mess:"exist",
-         //   token:token,
 
-   //     })
-       // res.json({ mess: "exits", token: token, userId: data._id});
 
 
 
@@ -149,9 +144,18 @@ app.post("/login", async (req, res) => {
 
 
 })
-app.get("/profile", async (req, res) => {
-    let data = await Users.findOne({ email: email, pass: pass, name: name });
-    res.send([data])
+app.post("/profile", (req, res) => {
+   id=req.body.id;
+})
+app.get(`/profile/:id`, async (req, res) => {
+    let data=await Users.findById(req.params.id)
+    console.log(data);
+    res.json([data])
+
+
+
+
+
 })
 app.post("/products", (req, res) => {
     let pr = new Products({
@@ -163,7 +167,7 @@ app.post("/products", (req, res) => {
     });
     pr.save();
 })
-app.get("/getProduct",  async (req, res) => {
+app.get("/getProduct", async (req, res) => {
     try {
         let data = await Products.find();
         res.json(data)
